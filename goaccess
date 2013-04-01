@@ -1,0 +1,16 @@
+# goaccess completion                             -*- shell-script -*-
+
+_goaccess()
+{
+    local cur prev words cword
+    _init_completion || return
+
+    if [[ "$cur" == -* ]] ; then
+        COMPREPLY=( $( compgen -W '-f -c -e -a' -- "$cur" ) )
+    else
+        _filedir -d
+    fi
+} &&
+complete -F _goaccess goaccess
+
+# ex: ts=4 sw=4 et filetype=sh
